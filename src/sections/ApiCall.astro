@@ -1,0 +1,73 @@
+<section>
+  <h2>INFORMACION DE VIDEOS CON UNA REQUEST A LA API</h2>
+
+  <p>
+    Para esta seccion lo primero que realize fue revisar la documentacion de la api y como hacer las peticiones, asi como 
+    que credenciales necesitaba y donde obtenerlas en la cuenta de prueba.
+  </p>
+
+  <p>
+    Una vez teniendo el account_id, client_secret y client_id procedemos a obtener el token de seguridad para las peticiones, para esto configure un entorno
+    Postman con la documentacion para primero probar sin implementar codigo y de esta manera hacer los ajustes en la peticion mas rapido
+    aqui una imagen del entorno que se estaba configurando
+  </p>
+
+  <img src="../../public/assets/postmanConfiguration.png" />
+
+  <p>
+    Una vez configuradas las variables de entorno se obtuvo el token de acceso
+  </p>
+
+  <img src="../../public/assets/accessToken.png" />
+
+  <p>
+    De esta manera ya somos capaces de traernos la informacion de los videos de la cuenta como se pide.
+  </p>
+
+  <img src="../../public/assets/successfulResponse.png"/>
+
+  <p>
+    El siguiente paso sera implementar en codigo esta llamada a la api para mostrar la lista de  los videos en este blog
+  </p>
+
+  <img src="../../public/assets/printVideoList.png" />
+
+  <p>
+    Una vez implementado podemos ver que efectivamente la consola nos imprime los datos que ocupamos de los videos de la cuenta de prueba
+  </p>
+
+  <img src="../../public/assets/consoleList.png" />
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const accountId = '6415484612001';
+      const token = 'AHOrtoXtiHxBcUym3_PVeS-LLWXKidcq6xkqZbqbmWz0rbtrAn_wekpW-0JOHJEOH6fvwqk36OqCUzT96ccIvIdib7nK9ZaQBQG4AmmJfZFL1MNHGNwrJgF451tjZopO2UpJJlt3BTTBZ2vSTModd2dQZ4RM-RitLWiYtmtiLldUmhSQcVagot18zO1hVfq8D4IWNewwa7C0bCg2xG0AXPxJHHXHgNQcjpE0_unQYzurCtH3EQuBh0teF8Wicnxu7K8aFEBzUTCT3N_I9uEkK5-P07psyG7ClB2ELXfOc2k27zycDukLGA_ibyKWxULEkiU16JukQrXGtG-aHkxldPYrLxzfpZei4ihXOwKPNSuCsQhyJD4rDiwTxc-nkXWmLHwQvGf3QmdyiiE8LVC6WIz8RdQnJF8mLdpvMDQgusNXEJCvowFP9wC-rku4raGAaqKAIJU7y8ru1kXjIy9IGm57oXdh1OVRtFoOttBcgapYfAoMTAOK6Xi7tEz1XGymao4veeCaOUDGE6CALGS_29vSSXV0kTBeCYxocU8mGDk3CxWrXu3AO-dHWK2VPuU_gZFkM4Y16a6GBBsmJPEz-HQTYjmGG6yhxvq41abXLHG2-JmQyinutVHxOX-glHmxE-l_dUZIQpPjh-Qv9uvPkYjS_K-Y3P3SRcz6DDxtio-nqgmGVSyDYH09UJdidodpbFOV5qlWaLq_TmxmJLpoSgxLnQGjw_cGIgX0Yd5TcDIvNh04onhh-2npdAOpdx4F5lInX4U-wAgkVVvoKBTRrlEwMbWglnvJam1sVu82rcolUsG3NWfb2GIjsx57DopkvXG34rTw4PZQPUcqQOmlFJfQ3tRyAr2gh-OWoA0xrYYjfhHFKQKqW6pBfqKERUwTsqkqGacBE8BHOxNQCt9nBziMFSfE3Rh_UenqWoIGJ6bn8IS0ySFwu-VmdmoKe-RKAlP2ahcEJskvGowo6HFQ_LtJy507NtF5lYucuDZNnAn88iCT7Lh1hmQpMivZ_3yFggy7sTfEfAYwcsb3WJHMK8_kNW6klKp4rb0mTW9adXqL-vADwcYhLuEZiTNZy5vbpQemqbuda7Ll_eaoRTrcj3rvs_5QnTLVAlzRAfDrRmBwTD6yxgf3wqkeaDDUmdWSo86TuslcHbu-FaFzFfTcyTyrfDgohghGS2yHiKgzEPRiWlxE7Yi8ljWwvX-Z1egw4FYdWSLEFNIBIshuBlzmNdYTVquNcdeAy0ALyReNIwS411V8qMievfOjCIzb2drt8VRiJ-_DM_WIUP9nY-saYcFVifZMz1SpZZ3x-I0stDKvj76HcvBCgd0tu0pLqp8D_CeYjycygDNtCoZ52TR77eTqPobRojTv2m4AP1gGUk2gcx7EdvrEiSzdOnTLyllTAFauvcBP8hT541hCwXDgV0FKvSsNXvugH101OVgz2duiMjnM1Mzp96A0w7v_3uy_CGMNXZVeQqPG'
+      const apiUrl = `https://cms.api.brightcove.com/v1/accounts/${accountId}/videos`;
+
+      const requestOptions = {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+
+      fetch(apiUrl, requestOptions)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error al obtener los videos');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const videos = data.map(video => ({
+            id: video.id,
+            name: video.name
+          }));
+          console.log('Videos:', videos);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    });
+  </script>
+</section>

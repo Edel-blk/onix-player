@@ -1,0 +1,74 @@
+<section>
+  <div>
+    <h2>First Task</h2>
+
+    <p>
+      En este primer paso del assessment lo primero fue revisar la documentacion
+      del reproductor de Brightcove, y tratar de echar a andar un reproductor con
+      puro HTML, JavaScript y CSS, una vez ya teniendo el reproductor funcionando,
+      lo segundo que hice fue revisar mas o menos que iba a necesitar para
+      desarollar las demas tareas, me di cuenta que es mas una prueba de implementacion de sus herramientas mas que una 
+      app en especifico, entonces llegue a la conclusion de que lo mas optimo para presentar este examen seria creando un
+      blog de como utilizar las herramientas de Brightcove que vienen en el assessment para esto me decidi por Astro como framework
+      por su facilidad y rapidez.
+    </p>
+
+    <p>      
+      Dicho lo anterior pasamos con la primer implementacion que es poder mutear el video recien se reproduce por default
+      y despues de eso a los 10 segundos que el video automaticamente se brinque 20 segundos, como si fuera el 'Skip Intro'
+      de Netflix pero sin un boton como tal.
+    </p>
+
+    <p>
+      Para empezar con el muteo del video una vez teniendo la referencia del video en una variable, solo es necesario poner
+      myPlayer.muted(true) de esta manera nosotros estamos diciendo que el video comience sin audio.
+    </p>
+
+    <p>
+      Para el punto dos de esta primera actividad estuve experimentado con los botones para adelantar y atrasar que vienen en
+      los videos de la documentacion y pude notar que se tiene una funcion llamada currentTime() la cual no solo retorna el tiempo actual
+      en el que se encuentra el video si no que tambien se puede usar para setear el tiempo al que queremos que adelante o retroceda, entonces
+      entendiendo esto solo fue necesario agregar un TimeOut de 10 segundos al inizializar el video y cuando pasaran estos 10 segundos se seteara
+      el tiempo del video en 20 segundos mas.
+    </p>
+
+    <p>
+      Este es el ejemplo funcionando
+    </p>
+  </div>
+
+  <div>
+    <video-js
+      id="first-video"
+      data-account="6415484612001"
+      data-player="uRQfMlBGlW"
+      data-embed="default"
+      controls=""
+      data-video-id="6350721539112"
+      data-playlist-id=""
+      data-application-id=""
+      width="1080"
+      height="607.5"
+      class="vjs-fluid"></video-js>
+  </div>
+
+  <script
+    src="https://players.brightcove.net/6415484612001/uRQfMlBGlW_default/index.min.js"
+  ></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const player = videojs("first-video").ready(function () {
+        const myPlayer = this;
+
+        myPlayer.muted(true);
+        myPlayer.play();
+
+        setTimeout(() => {
+          const videoTime = myPlayer.currentTime();
+          myPlayer.currentTime(videoTime + 20);
+        }, 10000);
+      });
+    });
+  </script>
+</section>

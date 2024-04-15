@@ -1,0 +1,36 @@
+<section>
+  <h2>PLAYER WITH ADS</h2>
+
+  <p>
+    Para esta actividad es necesario crear un reproductor con anuncios, primero fue configurar el reproductor que tendria el anuncio,
+    para ello cree otro reproductor y asi no afectar el que se utilizaba en la primera parte, ya dentro de las configuraciones del reproductor
+    es facil poner el anuncio que se desea solo se habilita el Client-Side tag y ponemos el tag del anuncio, aqui hay un ejemplo de como quedo,
+  </p>
+
+  <div style="max-width: 1080px;">
+    <style>
+    video-js.video-js.vjs-fluid:not(.vjs-audio-only-mode) {
+      padding-top: 56.25%;
+    }
+    </style><video-js
+      data-account="6415484612001"
+      data-player="Y6o35xZXJ"
+      data-embed="default"
+      controls=""
+      data-video-id="6350719287112"
+      data-playlist-id=""
+      data-application-id=""
+      class="vjs-fluid"></video-js>
+  </div>
+
+  <p>
+    En teoria deberia de funcionar pero por como renderiza el contenido Astro es posible que no se visualize el anuncio pero aqui esta una 
+    imagen donde se muestra funcionando el anuncio
+  </p>
+
+  <img src="../../public/assets/ad-player.png" />
+
+  <script
+    src="https://players.brightcove.net/6415484612001/Y6o35xZXJ_default/index.min.js">
+  </script>
+</section>
