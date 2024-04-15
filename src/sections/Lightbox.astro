@@ -1,4 +1,50 @@
 <section>
   <h2 class="text-sky-400 font-bold text-xl">7. REPRODUCTOR EN LIGHTBOX</h2>
+
+  <p>
+    Para poder utilizar un reproducto con lightbox es necesario jugar un poco con los estilos en CSS, pero antes de ello deberiamos comenzar
+    por lo basico que seria que nuestro reproductor funcione correctamente como se muestra a continuacion.
+  </p>
+
+  <img src="/static/lightbox-1.png" />
+
+  <p>
+    Una vez que nos aseguramos que funciona bien, podemos comenzar a crear nuestra lightbox, primero debemos tener un preview del video en el
+    que el usuario final pueda hacer click y despues se abra el lightbox y reproduzca el video, para ello vamos a crear un div al que le vamos a
+    asignar un id el nombre del id no es importante puede llamarse como sea pero en este caso la llamaremos "preview" para ir haciendo un
+    camino con lo explicado.
+  </p>
+
+  <p>
+    Tambien necesitamos ir ajustando nuestro codigo JavaScript, primero debemos obtener del DOM el elemento preview, que anteriormente ya creamos,
+    y dentro del callback que tenemos en el metodo getPlayer vamos a asignarle contenido a este elemento preview como se muestra en la imagen,
+    asi estamos teniendo un preview del video pero el video sigue apareciendo abajo y el preview es solo una imagen, pero con CSS haremos que no se muestre
+    el video a menos que nosotros demos click en el preview.
+  </p>
+
+  <img src="/static/lightbox-2.png" />
+
+  <p>
+    Para poder ocultar y mostrar contenido primero vamos a poner un onClick en nuestro elemento de preview, que este lo que hara es agregar una clase de
+    CSS a nuestro elemento playerLightbox que sera el padre de nuestro elemento del video, clase que se le agregara sera para que se muestre al hacer click
+    en el preview.
+  </p>
+
+  <p>
+    Ahora antes de mostrarlo necesitamos ocultarlo, para ello se creo una clase de CSS que se llama playerHide que podria tener la propiedad de "display: none" que hara que el reproductor
+    no se vea cuando se carga la pagina. y cuado demos click en el preview se le asignara la clase playerShow que podria tener la propiedad "display:block" a nuestro reproductor lo que hara que
+    se muestre.
+  </p>
+
+  <p>
+    Para cerrarlo solo es necesario agregar un boton que en su evento onClick asigne nuevamente la clase playerHide al reproductor para que
+    ya no se muestre el video y solo quede el preview.
+  </p>
+
+  <p>
+    Quedaria algo asi como se muestra en el siguiente link, teniendo en cuenta que se pueden agregar o quitar propiedades CSS para que se vea una animacion o puede quedar un poco rustico
+    todo dependiendo de como se necesite: 
+    <a class="text-blue-600 visited:text-purple-600 ..." target="_blank" href="https://jsfiddle.net/edelblk/tqkd25o0/36/" >PLAYGROUND</a>
+  </p>
   
 </section>
