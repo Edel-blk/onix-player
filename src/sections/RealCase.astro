@@ -1,0 +1,31 @@
+<section>
+  <h2 class="text-sky-400 font-bold text-xl">8. REPRODUCTOR ABERIADO</h2>
+
+  <p>
+    Al entrar al enlace proporcionado rapidamente podemos ver que no se muestra nada mas que un reproductor que no funciona, lo siguiente es abrir
+    la consola para ver si podemos rescatar algun mensaje de error.
+  </p>
+
+  <img src="/static/consoleError.png"/>
+
+  <p>
+    Y efectivamente podemos notar que tenemos un 403 que lo podemos entender como que el servidor se nego a responder la peticion aun que si le
+    llegaran los datos correctamente y puede ser ocasionado por que no se tienen los permisos necesarios para acceder a la informacion del servicio
+    en especifico.
+  </p>
+
+  <img src="/static/network-data.png"/>
+
+  <p>
+    Podemos obtener mas informacion abriendo la pestaña de network en donde podemos ver el endpoint al que se esta mandando la peticion tanto como los headers
+    que se estan enviando
+  </p>
+
+  <img src="/static/response-data.png"/>
+
+  <p>
+    Tambien podemos obtener mas informacion de la respuesta como podemos ver en el apartado response se nos muestra un mensaje que no se muestra
+    al abrir la consola, donde claramente hay un texto que dice que no podemos acceder a ese contenido por la politca de acceso, que habria que
+    revisarla para poder ver que estamos enviando mal al endpoint.
+  </p>
+</section>

@@ -1,0 +1,66 @@
+<section>
+  <h2 class="text-sky-400 font-bold text-xl">9. REPRODUCTOR ABERIADO CASO 2</h2>
+
+  <p>
+    Primero revisamos la consola del navegador para ver si nos regresa algo de informacion que podamos utilizar, normalmente cuando las cosas no
+    funcionan como esperamos los errores son de ayuda para saber que estamos haciendo mal
+  </p>
+
+  <img src="static/clear-console.png" />
+
+  <p>
+    Podemos notar que no tenemos absolutamente ningun error en la consola, entonces nuestra siguiente opcion es ver las peticiones que se estan haciendo
+    a la URL que estamos tratando de entrar para ello abriremos nuestra pestaña de network situada en el mismo lugar que la pestaña de la consola
+    y ver si podemos rescatar algo que nos ayude a entender por que no funciona nuestro reproductor.
+  </p>
+
+  <img src="static/network-html.png" />
+
+  <p>
+    Ya en la pestaña de network podemos ver el html que se esta cargando en nuestro navegador, asi a simple vista podemos alcanzar a notar que el tag
+    "script" que normalmente esta situado bajo la etiqueta de cierre de nuestro video esta dentro de la etiqueta "head" que tal vez no sea el lugar
+    en el que deberia de estar.
+  </p>
+
+  <p>
+    vamos a llevarnos este codigo html a un playground para ver si podemos hacer que funcione y asi no estar modificando el codigo
+    fuente y hacer pruebas con mas libertad.
+  </p>
+
+  <img src="static/error-reply.png" />
+
+  <p>
+    Una vez tenemos replicado el error en nuestro playground podemos empezar a mover partes del codigo, deberiamos empezar con lo mas basico, que seria
+    que solo se reproduzca el video sin agregar JavaScript para alterar su funcionamiento y asi poder revisar que la forma en la que estamos
+    inizializando el reproductor es la correcta.
+  </p>
+
+  <img src="static/error-reply-2.png" />
+
+  <p>
+    Nos quedaria algo como la imagen de arriba el codigo, solo comentamos el JavaScript extra, podemos notar que el contenido del reproductor ahora
+    se muestra diferente, pero sigue sin funcionar y reproducir el video, todavia nos queda mover el "script" que tiene el url del video
+    para comprobar si que este en el tag "head" hace una diferencia.
+  </p>
+
+  <img src="static/error-reply-3.png" />
+
+  <p>
+    Ahora con esos ajustes podemos ver que el reproducto nos muestra una imagen de fondo que parece ser del video y si damos click en el reproductor
+    efectivamente reproduce el video, al parece se soluciono el problema de que no mostraba imagen, pero aun queda ver si el boton de play
+    que estabamos agregando si funciona, para ello descomentamos el codigo que habiamos comentado antes
+  </p>
+
+  <img src="static/error-reply-4.png" />
+
+  <p>
+    Ya con el codigo descomentado podemos apreciar que efectivamente si funciona el boton que teniamos para darle play al reproductor, con las pruebas
+    que realizamos podemos concluir que es necesario que la etiqueta "script" deberia de estar justo despues del cierre de la etiqueta de nuestro
+    video como lo encontramos en la documentacion ya que esto podria ocasionar un mal funcionamiento del display o del servicio como tal.
+  </p>
+
+  <p>
+    Aqui esta el link al codigo que se modifico en el playground:
+    <a class="text-blue-600 visited:text-purple-600 ..." target="_blank" href="https://jsfiddle.net/edelblk/2aog16s7/25/" >PLAYGROUND</a>
+  </p>
+</section>
