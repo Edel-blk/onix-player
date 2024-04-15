@@ -1,6 +1,6 @@
 <section>
   <div>
-    <h2>First Task</h2>
+    <h2 class="text-sky-400 font-bold text-xl mt-30">SALTAR UN VIDEO MUTEADO</h2>
 
     <p>
       En este primer paso del assessment lo primero fue revisar la documentacion
@@ -33,42 +33,9 @@
     </p>
 
     <p>
-      Este es el ejemplo funcionando
+      Este es el ejemplo funcionando: 
+     <a class="text-blue-600 visited:text-purple-600 ..." href="https://jsfiddle.net/edelblk/jg8Lvo54/5/" target="_blank">SKIP MUTE VIDEO</a>
+
     </p>
   </div>
-
-  <div>
-    <video-js
-      id="first-video"
-      data-account="6415484612001"
-      data-player="uRQfMlBGlW"
-      data-embed="default"
-      controls=""
-      data-video-id="6350721539112"
-      data-playlist-id=""
-      data-application-id=""
-      width="1080"
-      height="607.5"
-      class="vjs-fluid"></video-js>
-  </div>
-
-  <script
-    src="https://players.brightcove.net/6415484612001/uRQfMlBGlW_default/index.min.js"
-  ></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const player = videojs("first-video").ready(function () {
-        const myPlayer = this;
-
-        myPlayer.muted(true);
-        myPlayer.play();
-
-        setTimeout(() => {
-          const videoTime = myPlayer.currentTime();
-          myPlayer.currentTime(videoTime + 20);
-        }, 10000);
-      });
-    });
-  </script>
 </section>
